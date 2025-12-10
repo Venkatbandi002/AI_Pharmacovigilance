@@ -11,7 +11,7 @@ from google import genai
 from google.genai import types
 from pypdf import PdfReader
 
-from .models import ContradictionRequest, ContradictionResponse
+from backend.models import ContradictionRequest, ContradictionResponse
 
 load_dotenv()
 
@@ -57,6 +57,7 @@ app = FastAPI(lifespan=lifespan)
 origins = [
     "http://localhost:3000",
     "http://localhost:5173", 
+    ""
 ]
 
 app.add_middleware(
