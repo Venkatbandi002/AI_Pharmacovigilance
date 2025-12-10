@@ -1,0 +1,15 @@
+# backend/rag_corpus.txt
+
+# --- Document 1: Summary of Phase III Clinical Trial Findings (Source: ClinicalTrials.gov NCT045xxxx) ---
+**DRUG: VERIDOXINE (Phase III Study)**
+The Phase III clinical program (N=5,200) for Veridoxine showed a consistent safety profile. The incidence of cardiovascular adverse events (AEs) was 0.8% in the treatment group versus 0.9% in the placebo group, demonstrating no statistically significant risk of cardiac complications. Hepatic enzyme elevation (ALT/AST) above 3x ULN occurred in 1.2% of patients, all of which resolved upon discontinuation of therapy, indicating the hepatotoxicity risk is considered mild and transient. The primary safety conclusion was that Veridoxine does not increase the risk of severe, life-threatening cardiovascular or liver events.
+
+# --- Document 2: Established Safety Profile / Labeling (Source: Hypothetical FDA Labeling Section 6.1) ---
+**VERIDOXINE LABELING: ADVERSE REACTIONS**
+Common Adverse Reactions (incidence >5%): Headache (12%), Nausea (8%).
+Serious Adverse Reactions (incidence <1%): Peripheral Neuropathy (0.7%).
+Note: No cases of myocarditis or cardiomyopathy were reported during pre-market testing. Regulatory guidelines stipulate that any post-marketing report involving persistent or severe cardiovascular adverse events (MedDRA term: Myocarditis, Pericarditis) must be expedited for signal detection analysis.
+
+# --- Document 3: Independent Review/Mechanism (Source: Hypothetical PubMed Abstract ID: 3590xxxx) ---
+**MECHANISM OF ACTION AND LIVER SAFETY**
+An independent review of the Veridoxine drug class confirms that the drug is primarily metabolized via CYP3A4. Its metabolites are considered non-toxic to hepatocytes. Severe, idiosyncratic drug-induced liver injury (DILI) related to Veridoxine has not been observed in any large cohort studies to date, and a strong causality link is absent in the existing literature. DILI signal confidence must be high (Naranjo score > 8) to warrant a label change.
