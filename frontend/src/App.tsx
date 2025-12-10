@@ -13,7 +13,7 @@ interface AnalysisHistoryItem extends ContradictionResponse {
 }
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+  import.meta.env.VITE_API_BASE_URL || "https://ai-pharmacovigilance.onrender.com";
 
 async function analyzePdf(file: File): Promise<ContradictionResponse> {
   const formData = new FormData();
