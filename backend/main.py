@@ -11,7 +11,7 @@ from google import genai
 from google.genai import types
 from pypdf import PdfReader
 
-from backend.models import ContradictionRequest, ContradictionResponse
+from models import ContradictionRequest, ContradictionResponse
 
 load_dotenv()
 
