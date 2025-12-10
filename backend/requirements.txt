@@ -1,5 +1,9 @@
 # backend/requirements.txt
 fastapi
-uvicorn[standard]
-pydantic
+uvicorn
+python-dotenv
+pypdf
 google-genai
+pydantic
+aiofiles
+python-multipart
