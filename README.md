@@ -181,9 +181,10 @@ Returns a **ContradictionResponse** object:
 ```
  ### Outputs:
 
- <img width="1004" height="945" alt="Screenshot 2025-12-10 150132" src="https://github.com/user-attachments/assets/d137b1d1-d9cf-499d-8aaf-b2e87849563e" />
+ <img width="600" alt="Screenshot 2025-12-10 150132" src="https://github.com/user-attachments/assets/d137b1d1-d9cf-499d-8aaf-b2e87849563e" />
 
- <img width="1034" height="956" alt="Screenshot 2025-12-10 162043" src="https://github.com/user-attachments/assets/2be85fb2-02fe-4bed-9daf-f82da90976e7" />
+ <img width="600" alt="Screenshot 2025-12-10 162043" src="https://github.com/user-attachments/assets/2be85fb2-02fe-4bed-9daf-f82da90976e7" />
 
 
 ---
+
