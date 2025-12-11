@@ -1,190 +1,214 @@
-﻿# AI_Pharmacovigilance
-
-## **Overview**
-
-The **AI Pharmacovigilance** is a two-part application consisting of:
-
-### **1. FastAPI Backend**
-
-* Accepts *clinical / safety PDF files*
-* Extracts text using **PyPDF**
-* Uses **Google Gemini 2.5 Flash** to:
-
-  * Extract structured fields from PDFs
-  * Compare trial claims with post-market case reports
-  * Detect potential contradictions in safety signals
-* Maintains lightweight session-based RAG-context history
-
-### **2. React + Vite Frontend**
-
-* Clean PDF upload UI
-* Displays contradiction analysis results
-* Shows severity heatmap
-* Maintains local analysis history
-* Allows JSON export of results
-
-This tool is intended as an MVP for **AI-assisted pharmacovigilance signal detection**.
+Below is an **updated, polished README.md** that *integrates the UI flow shown in your screenshots* and explains the features more clearly.
+I’ve added **image sections using descriptive placeholders**, which you can replace with actual image paths in your repo.
 
 ---
 
-# ⚙️ **Backend Setup (FastAPI + Gemini)**
+# **AI PV Contradiction Tracker**
 
-### **1. Create Virtual Environment**
+An end-to-end **AI-powered pharmacovigilance signal detection system** combining:
+
+* **FastAPI + Gemini 2.5 Flash backend** for PDF/text ingestion, field extraction, and contradiction analysis
+* **React + Vite frontend** for a clean user workflow, heatmaps, and history management
+
+This tool enables rapid identification of contradictions between **clinical trial safety claims** and **post-market adverse event reports**.
+
+---
+
+# 🚀 **Application Screenshots**
+
+## **Homepage — Mode Selection**
+
+Users can choose:
+
+* **Primary: PDF Upload** (automated extraction + analysis)
+* **Secondary: Manual Text** (enter trial claim + ADR narrative directly)
+
+<img width="600" alt="Screenshot 2025-12-11 173212" src="https://github.com/user-attachments/assets/eef20826-3ebc-47b3-9579-136ed2db2783" />
+
+<img width="600" alt="Screenshot 2025-12-11 173222" src="https://github.com/user-attachments/assets/52a144e5-0396-4264-a973-32093b368a47" />
+
+---
+
+## **PDF Upload Mode**
+
+* Upload a **Case Report / Trial PDF**
+* System requires a file to proceed
+* Button triggers PDF parsing → Gemini extraction → contradiction analysis
+
+---
+
+## **Manual Text Mode**
+
+Inputs:
+
+1. **Trial Claim / Label Safety Statement**
+2. **Post-Market Case Report / ADR Narrative**
+3. **Session ID** (auto-populated for continued history tracking)
+
+---
+
+## **Analysis History Panel**
+
+* Stores previous analyses locally
+* Each report displays a **SIGNAL badge** when contradiction was detected
+* "Clear History" removes all entries
+
+<img width="600" alt="Screenshot 2025-12-11 173232" src="https://github.com/user-attachments/assets/05edf7fe-86d1-4bb8-a71c-afdc5a7e2958" />
+
+---
+
+## **Analysis Result — Contradiction Detected**
+
+Result includes:
+
+* **Overall Verdict**
+* **Signal Confidence Score**
+* **Detailed Contradiction Reasoning**
+
+<img width="600" alt="Screenshot 2025-12-11 173252" src="https://github.com/user-attachments/assets/6732372f-ed96-4215-a8f4-62c3b601ebf8" />
+<img width="600" alt="Screenshot 2025-12-11 173303" src="https://github.com/user-attachments/assets/acbdaad2-879e-4a6e-88cd-be5cf79a087b" />
+
+---
+
+## **Heatmap Matrix + Auto-Draft Regulatory Report**
+
+
+Two major outputs:
+
+### ✔ **Safety Contradiction Heatmap Matrix**
+
+* Shows each adverse event category
+* Trial claim vs. post-market signal strength
+* Severity classification: *Low / High / Critical*
+
+### ✔ **Regulatory Reporting Auto-Draft**
+
+* Auto-generated safety signal narrative
+* Intended for PSURs, RMP updates, or internal signal triage workflows
+
+---
+
+# ⚙️ **System Overview**
+
+The **AI PV Contradiction Tracker** identifies contradictions between:
+
+### **Clinical Trial Safety Claims**
+
+(e.g., “No statistically significant risk of arrhythmia.”)
+
+**vs.**
+
+### **Post-Market Case Report Narratives**
+
+(e.g., “Patient developed ventricular fibrillation requiring ICU admission.”)
+
+The backend uses **Gemini 2.5 Flash** to:
+
+* Extract structured fields from PDFs
+* Evaluate contradictions using deterministic prompting
+* Generate reasoned reports + heatmaps
+
+---
+
+# 🧠 **Backend Architecture (FastAPI + Gemini)**
+
+### **Key Features**
+
+* PDF text extraction with **PyPDF**
+* LLM-powered field extraction:
+
+  * `trial_claim`
+  * `case_report`
+  * `session_id`
+* Contradiction scoring + severity classification
+* Simple in-memory session-based **RAG-lite context**
+
+### **Run Backend**
 
 ```bash
 cd backend
 python3 -m venv venv
 source venv/bin/activate
-```
-
-### **2. Install dependencies**
-
-```bash
 pip install -r requirements.txt
-```
 
-packages include:
-
-* `fastapi`
-* `uvicorn`
-* `pypdf`
-* `python-dotenv`
-* `google-genai`
-
-### **3. Environment Variable**
-
-Create `.env` inside `backend/`:
-
-```
-GEMINI_API_KEY=your_gemini_key_here
-```
-
-### **4. Run Backend**
-
-```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-### **Backend API Endpoints**
+Create `.env`:
 
-| Method | Endpoint              | Description                                         |
-| ------ | --------------------- | --------------------------------------------------- |
-| `POST` | `/api/v1/analyze`     | Analyze text (trial claim + case report)            |
-| `POST` | `/api/v1/analyze-pdf` | Upload PDF → extract fields → analyze contradiction |
+```
+GEMINI_API_KEY=your_api_key_here
+```
 
-Request/response schema is defined in **models.py**.
+### **API Endpoints**
+
+| Method | Endpoint              | Description                        |
+| ------ | --------------------- | ---------------------------------- |
+| `POST` | `/api/v1/analyze`     | Manual text contradiction analysis |
+| `POST` | `/api/v1/analyze-pdf` | PDF → Extract → Analyze            |
 
 ---
 
-# **Frontend Setup (React + Vite)**
+# 🖥️ **Frontend (React + Vite)**
 
-### **1. Install dependencies**
+### **Install & Run**
 
 ```bash
 cd frontend
 npm install
+npm run dev
 ```
 
-### **2. Environment Variables**
-
-Create `.env` in the frontend root:
+`.env` file:
 
 ```
 VITE_API_BASE_URL=http://localhost:8000
 ```
 
+### **Frontend Features**
 
-### **3. Run Dev Server**
-
-```bash
-npm run dev
-```
-
----
-
-# **How the System Works**
-
-### **Workflow**
-
-1. User uploads a **clinical / safety PDF**
-2. Backend extracts text using **PyPDF**
-3. Gemini LLM extracts:
-
-   * `trial_claim`
-   * `case_report`
-   * `session_id`
-4. Backend passes these to the contradiction analysis LLM
-5. Result returned as JSON
-6. Frontend shows:
-
-   * Contradiction verdict ("Yes" / "No")
-   * Heatmap based on signal confidence score
-   * Detailed reasoning
-   * Downloadable JSON
-   * History stored locally
+* PDF upload + manual text modes
+* Session-based history
+* Heatmap visualization
+* Auto-generated regulatory narrative
+* JSON export for compliance teams
 
 ---
 
-# **Frontend UI Highlights**
+# 📊 **How the Analysis Works**
 
-* TailwindCSS styling
+### **1. PDF Parsing**
 
-* Responsive layout
+Extracts all readable text.
 
-* Severity-based heatmap:
+### **2. LLM Field Extraction**
 
-  | Condition                    | Color  |
-  | ---------------------------- | ------ |
-  | No contradiction             | Green  |
-  | Low confidence contradiction | Green  |
-  | Medium confidence            | Yellow |
-  | High confidence              | Red    |
+Gemini extracts:
 
-* Clean components:
+* Trial claim
+* Case report summary
+* Adverse events
+* Patient details
 
-  * `PdfUploadForm`
-  * `HistoryList`
-  * `ResultCard`
+### **3. Contradiction Analysis**
 
----
+LLM determines:
 
-# **Backend Logic Summary**
+* Whether contradiction exists
+* Severity (Low → Critical)
+* Confidence score
+* Explanation of mismatch
 
-### **PDF Extraction**
+### **4. Output Rendering**
 
-```python
-reader = PdfReader(BytesIO(pdf_bytes))
-text = "\n".join(page.extract_text() for page in reader.pages)
-```
+Frontend displays:
 
-### **LLM Field Extraction**
-
-Backend sends PDF text to Gemini to extract fields needed for analysis.
-
-### **Contradiction Analysis**
-
-Gemini compares:
-
-* Trial safety claim
-* Case report adverse event
-* RAG corpus context
-* Session memory (last 5 analyses)
-
-Returns a **ContradictionResponse** object:
-
-```json
-{
-  "contradiction_detected": "Yes",
-  "signal_confidence_score": 0.82,
-  "contradiction_reasoning": "..."
-}
-```
- ### Outputs:
-
- <img width="600" alt="Screenshot 2025-12-10 150132" src="https://github.com/user-attachments/assets/d137b1d1-d9cf-499d-8aaf-b2e87849563e" />
-
- <img width="600" alt="Screenshot 2025-12-10 162043" src="https://github.com/user-attachments/assets/2be85fb2-02fe-4bed-9daf-f82da90976e7" />
-
+* Verdict
+* Confidence score
+* Detailed reasoning
+* Heatmap
+* Auto-generated regulatory draft
 
 ---
 
+Would you like any of those?
