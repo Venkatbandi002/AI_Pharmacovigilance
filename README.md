@@ -205,8 +205,3 @@ Frontend displays:
 * Auto-generated regulatory draft
 
 ---
-
-Would you like any of those?
-
-
-
