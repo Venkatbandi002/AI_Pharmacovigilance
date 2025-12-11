@@ -1,8 +1,3 @@
-Below is an **updated, polished README.md** that *integrates the UI flow shown in your screenshots* and explains the features more clearly.
-I’ve added **image sections using descriptive placeholders**, which you can replace with actual image paths in your repo.
-
----
-
 # **AI PV Contradiction Tracker**
 
 An end-to-end **AI-powered pharmacovigilance signal detection system** combining:
@@ -212,3 +207,4 @@ Frontend displays:
 ---
 
 Would you like any of those?
+
