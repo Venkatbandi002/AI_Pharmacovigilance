@@ -61,12 +61,10 @@ Result includes:
 * **Detailed Contradiction Reasoning**
 
 <img width="600" alt="Screenshot 2025-12-11 173252" src="https://github.com/user-attachments/assets/6732372f-ed96-4215-a8f4-62c3b601ebf8" />
-<img width="600" alt="Screenshot 2025-12-11 173303" src="https://github.com/user-attachments/assets/acbdaad2-879e-4a6e-88cd-be5cf79a087b" />
 
 ---
 
 ## **Heatmap Matrix + Auto-Draft Regulatory Report**
-
 
 Two major outputs:
 
@@ -80,6 +78,8 @@ Two major outputs:
 
 * Auto-generated safety signal narrative
 * Intended for PSURs, RMP updates, or internal signal triage workflows
+
+<img width="600" alt="Screenshot 2025-12-11 173303" src="https://github.com/user-attachments/assets/acbdaad2-879e-4a6e-88cd-be5cf79a087b" />
 
 ---
 
@@ -207,5 +207,6 @@ Frontend displays:
 ---
 
 Would you like any of those?
+
 
 
