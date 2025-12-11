@@ -18,10 +18,6 @@ Users can choose:
 * **Primary: PDF Upload** (automated extraction + analysis)
 * **Secondary: Manual Text** (enter trial claim + ADR narrative directly)
 
-<img width="600" alt="Screenshot 2025-12-11 173212" src="https://github.com/user-attachments/assets/eef20826-3ebc-47b3-9579-136ed2db2783" />
-
-<img width="600" alt="Screenshot 2025-12-11 173222" src="https://github.com/user-attachments/assets/52a144e5-0396-4264-a973-32093b368a47" />
-
 ---
 
 ## **PDF Upload Mode**
@@ -29,6 +25,8 @@ Users can choose:
 * Upload a **Case Report / Trial PDF**
 * System requires a file to proceed
 * Button triggers PDF parsing → Gemini extraction → contradiction analysis
+
+<img width="600" alt="Screenshot 2025-12-11 173212" src="https://github.com/user-attachments/assets/eef20826-3ebc-47b3-9579-136ed2db2783" />
 
 ---
 
@@ -39,6 +37,8 @@ Inputs:
 1. **Trial Claim / Label Safety Statement**
 2. **Post-Market Case Report / ADR Narrative**
 3. **Session ID** (auto-populated for continued history tracking)
+
+<img width="600" alt="Screenshot 2025-12-11 173222" src="https://github.com/user-attachments/assets/52a144e5-0396-4264-a973-32093b368a47" />
 
 ---
 
@@ -207,4 +207,5 @@ Frontend displays:
 ---
 
 Would you like any of those?
+
 
